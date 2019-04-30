@@ -7,7 +7,6 @@ const baseUrl = "https://api.themoviedb.org/3/discover/movie?with_genres=";
 const apiKey = "dbdeb8c11aff490bb50b7b555bd20488";
 
 const getMoviesByGenre = async genre => {
-  console.log("getMoviesByGenre", genre);
   if (!genre) return [];
 
   const genreType = genres.find(
@@ -19,7 +18,6 @@ const getMoviesByGenre = async genre => {
   const moviesRes = await fetch(
     baseUrl + genreType.id + "&api_key=" + apiKey
   ).then(res => res.json());
-  console.log("movieList", moviesRes);
 
   const { results } = moviesRes;
   if (results.length > 0) {
@@ -46,8 +44,6 @@ class Movies extends React.Component {
 
   render() {
     const { movies } = this.state;
-
-    console.log("movies", movies);
 
     return (
       <div>
